@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<header>
+    <link rel="stylesheet" href="newsapi.css">
+</header>
+<script>
+    function getnews(){
+        fetch("https://newsapi.org/v2/top-headlines?apikey=cfa6b0b0384642ba94c4d540cc5750c8&q=apple")
+        .then(a => a.json())
+        .then(response => {
+            for (var i = 0; i < response.articles.length; i++) {
+                document.getElementById("output").innerHTML+=
+                "<div style ='padding-top:20px;'><img style = 'float:left;width:150px;'src='"+response.articles[i].urlToImage+"'> <h1>"+response.articles[i].title+"</h1>"+response.articles[i].source.name+"</br>"+response.articles[i].description+"' <a href ='"+response.articles[i].utl+"'target = '_blank'>'"+response.articles[i].url+"</a></div>"
+            }
+        })
+    }
+    
+</script>
+
+<button onclick='getnews()'>Get news on india </button>
+<div id="output"></div>
+
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div id="tradingview_b3d06"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NSE-ADANIPORTS/" rel="noopener" target="_blank"><span class="blue-text">ADANIPORTS Chart</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget(
+    {
+    "autosize": true,
+    "symbol": "NSE:ADANIPORTS",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "dark",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "allow_symbol_change": true,
+    "container_id": "tradingview_b3d06"
+  }
+    );
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
